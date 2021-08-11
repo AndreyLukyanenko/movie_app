@@ -16,26 +16,32 @@ class FilmBuilder extends StatefulWidget {
 }
 
 class _FilmBuilderState extends State<FilmBuilder> {
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: movieList.length,
       itemBuilder: (context, index) {
         Movie movie = movieList[index];
-        return Card(
-          child: ListTile(
-            selectedTileColor: Colors.black,
-            title: Text(
-              movie.title,
+        return Container(
+          color: _selectedIndex == index ? Colors.teal : Colors.white,
+          child: Card(
+            child: ListTile(
+              title: Text(
+                movie.title,
+              ),
+              subtitle: Text(
+                movie.year.toString(),
+              ),
+              leading: Image.network(movie.imageUrl),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                widget.onTap(index);
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
             ),
-            subtitle: Text(
-              movie.year.toString(),
-            ),
-            leading: Image.network(movie.imageUrl),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              widget.onTap(index);
-            },
           ),
         );
       },
