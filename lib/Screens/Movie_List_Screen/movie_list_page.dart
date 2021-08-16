@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:test_app/Screens/Movie_Detail_Screen/movie_details.dart';
+import 'package:test_app/Screens/Movie_Detail_Screen/movie_details_page.dart';
 import 'package:test_app/components/film_builder.dart';
 import 'package:test_app/components/landscape_film_description.dart';
 import 'package:test_app/models/movie.dart';
@@ -65,7 +65,9 @@ class _MovieListPageState extends State<MovieListPage> {
             leading: Image.network(movie.imageUrl),
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: () {
-              selectedId = index;
+              setState(() {
+                selectedId = index;
+              });
               Navigator.push(
                 context,
                 MaterialPageRoute(
