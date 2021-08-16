@@ -7,5 +7,5 @@ import 'package:test_app/models/movie.dart';
 final Map<String, WidgetBuilder> routes = {
   HomePage.routeName: (context) => HomePage(),
   MovieListPage.routeName: (context) => MovieListPage(),
-  // MovieDetailsPage.routeName: (context) => MovieDetailsPage(),
+  // MovieDetailsPage.routeName: (context) => MovieDetailsPage(movie: mo,),
 };

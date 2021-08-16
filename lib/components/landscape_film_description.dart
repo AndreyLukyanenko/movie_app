@@ -3,12 +3,10 @@ import 'package:test_app/models/movie.dart';
 
 class LandscapeFilmDescription extends StatelessWidget {
   final int id;
-  final Color? color;
 
   LandscapeFilmDescription({
     Key? key,
     required this.id,
-    this.color,
   }) : super(key: key);
 
   @override

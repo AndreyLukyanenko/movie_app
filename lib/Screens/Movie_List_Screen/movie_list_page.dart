@@ -55,28 +55,31 @@ class _MovieListPageState extends State<MovieListPage> {
       itemCount: movieList.length,
       itemBuilder: (context, index) {
         Movie movie = movieList[index];
-        return Card(
-          child: ListTile(
-            selectedTileColor: Colors.grey,
-            title: Text(
-              movie.title,
-            ),
-            subtitle: Text(movie.year.toString()),
-            leading: Image.network(movie.imageUrl),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              setState(() {
-                selectedId = index;
-              });
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MovieDetailsPage(
-                    movie: movie,
+        return Container(
+          color: selectedId == index ? Colors.teal : Colors.white,
+          child: Card(
+            child: ListTile(
+              selectedTileColor: Colors.grey,
+              title: Text(
+                movie.title,
+              ),
+              subtitle: Text(movie.year.toString()),
+              leading: Image.network(movie.imageUrl),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                setState(() {
+                  selectedId = index;
+                });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MovieDetailsPage(
+                      movie: movie,
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         );
       },

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/components/film_builder.dart';
 import 'package:test_app/components/landscape_film_description.dart';
-import 'package:test_app/components/movie_detail_portrait.dart';
 import 'package:test_app/models/movie.dart';
 
 class MovieDetailsPage extends StatefulWidget {
@@ -21,7 +20,8 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
   @override
   Widget build(BuildContext context) {
     final deviceOrientation = MediaQuery.of(context).orientation;
-    int selectedId = 0;
+    int _selectedId = 0;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -32,8 +32,35 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
         ),
       ),
       body: deviceOrientation == Orientation.portrait
-          ? PortraitfilmDescription(
-              movie: widget.movie,
+          ? Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.network(
+                    widget.movie.imageUrl,
+                    height: 400,
+                    width: 400,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      widget.movie.year.toString(),
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      widget.movie.description,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 30),
+                    ),
+                  ),
+                ],
+              ),
             )
           : Row(
               children: [
@@ -41,11 +68,11 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                   flex: 3,
                   child: FilmBuilder(onTap: (index) {
                     setState(() {
-                      selectedId = index;
+                      _selectedId = index;
                     });
                   }),
                 ),
-                LandscapeFilmDescription(id: selectedId),
+                LandscapeFilmDescription(id: _selectedId),
               ],
             ),
     );
