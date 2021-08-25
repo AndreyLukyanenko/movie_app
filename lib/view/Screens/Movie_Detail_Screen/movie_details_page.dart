@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/components/film_builder.dart';
-import 'package:test_app/components/landscape_film_description.dart';
-import 'package:test_app/models/movie.dart';
+import 'package:test_app/models/movie_repository.dart';
+import 'package:test_app/view/components/film_builder.dart';
+import 'package:test_app/view/components/landscape_film_description.dart';
 
 class MovieDetailsPage extends StatefulWidget {
-  final Movie movie;
-  MovieDetailsPage({
-    Key? key,
-    required this.movie,
-  }) : super(key: key);
+  final int id;
+  MovieDetailsPage(
+    this.id,
+  );
 
   static String routeName = '/movie_details_page';
 
@@ -25,7 +24,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.movie.title,
+          movieList[widget.id].title,
           style: TextStyle(
             color: Colors.black,
           ),
@@ -38,14 +37,14 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.network(
-                    widget.movie.imageUrl,
+                    movieList[widget.id].imageUrl,
                     height: 400,
                     width: 400,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      widget.movie.year.toString(),
+                      movieList[widget.id].year.toString(),
                       textAlign: TextAlign.center,
                       style:
                           TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
@@ -54,7 +53,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      widget.movie.description,
+                      movieList[widget.id].description,
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 30),
                     ),
@@ -68,6 +67,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                   flex: 3,
                   child: FilmBuilder(onTap: (index) {
                     setState(() {
+                      Navigator.pop(context);
                       _selectedId = index;
                     });
                   }),

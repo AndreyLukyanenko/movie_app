@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/Routes/routes.dart';
-import 'package:test_app/models/movie.dart';
-
-import 'Screens/Home_Screen/home_page.dart';
-import 'Screens/Movie_List_Screen/movie_list_page.dart';
+import 'package:test_app/view/Screens/Home_Screen/home_page.dart';
 
 void main() {
   runApp(TestApp());
 }
 
 class TestApp extends StatelessWidget {
-  const TestApp({
+  TestApp({
     Key? key,
   }) : super(key: key);
   @override

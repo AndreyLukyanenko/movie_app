@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/Screens/Movie_List_Screen/movie_list_page.dart';
-import 'package:test_app/components/choosePatternButton.dart';
+import 'package:test_app/view/Screens/Movie_List_Screen/movie_list_page.dart';
+import 'package:test_app/view/components/choosePatternButton.dart';
 
 class HomePage extends StatelessWidget {
   static String routeName = "/home_page";

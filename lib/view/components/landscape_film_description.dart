@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/models/movie.dart';
+import 'package:test_app/models/movie_repository.dart';
 
 class LandscapeFilmDescription extends StatelessWidget {
   final int id;
