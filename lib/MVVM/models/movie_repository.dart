@@ -1,4 +1,4 @@
-import 'package:test_app/models/movie.dart';
+import 'package:test_app/MVVM/models/movie.dart';
 
 const movieList = const [
   Movie(

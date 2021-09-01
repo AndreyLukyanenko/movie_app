@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/models/movie_repository.dart';
+import 'package:test_app/BLoC/data/movie_data_bloc.dart';
 
 class LandscapeFilmDescription extends StatelessWidget {
   final int id;
@@ -12,7 +12,7 @@ class LandscapeFilmDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: 7,
+      flex: 2,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
