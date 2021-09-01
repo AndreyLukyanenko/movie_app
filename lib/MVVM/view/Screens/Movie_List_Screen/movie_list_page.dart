@@ -12,6 +12,7 @@ class MovieListPage extends StatefulWidget {
 
 class _MovieListPageState extends State<MovieListPage> {
   int selectedId = 0;
+  var _isLandscape = false;
   @override
   Widget build(BuildContext context) {
     final deviceOrientation = MediaQuery.of(context).orientation;
@@ -22,37 +23,38 @@ class _MovieListPageState extends State<MovieListPage> {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: deviceOrientation == Orientation.portrait
-          ? _buildPortraitListViewOfFilms()
-          : _buildLandscapeListViewOfFilms(),
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          deviceOrientation == Orientation.landscape
+              ? _isLandscape = true
+              : _isLandscape = false;
+          return Row(
+            children: [
+              Expanded(
+                child: FilmBuilder(
+                  onTap: (index) {
+                    if (_isLandscape) {
+                      setState(() {
+                        selectedId = index;
+                      });
+                    } else {
+                      selectedId = index;
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MovieDetailsPage(selectedId)));
+                    }
+                  },
+                ),
+              ),
+              _isLandscape
+                  ? Expanded(
+                      flex: 2,
+                      child: LandscapeFilmDescription(id: selectedId),
+                    )
+                  : Container(),
+            ],
+          );
+        },
+      ),
     );
-  }
-
-  Widget _buildLandscapeListViewOfFilms() {
-    return Row(
-      children: [
-        Expanded(
-          flex: 3,
-          child: FilmBuilder(onTap: (index) {
-            setState(() {
-              selectedId = index;
-            });
-          }),
-        ),
-        LandscapeFilmDescription(id: selectedId),
-      ],
-    );
-  }
-
-  Widget _buildPortraitListViewOfFilms() {
-    return FilmBuilder(onTap: (index) {
-      selectedId = index;
-
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => MovieDetailsPage(selectedId),
-        ),
-      );
-    });
   }
 }

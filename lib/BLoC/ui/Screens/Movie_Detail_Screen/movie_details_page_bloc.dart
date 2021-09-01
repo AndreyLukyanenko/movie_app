@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:test_app/BLoC/ui/components/detail_bloc.dart';
 
 class MovieDetailsPageBloc extends StatelessWidget {
@@ -11,7 +10,6 @@ class MovieDetailsPageBloc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final id = ModalRoute.of(context)!.settings.arguments as int;
-    final deviceOrientation = MediaQuery.of(context).orientation;
 
     Widget _buildLandscape(BuildContext context) {
       Navigator.pop(context);

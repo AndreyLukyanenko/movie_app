@@ -48,7 +48,7 @@ class _MovieListPageState extends State<MovieListPageBloc> {
               ),
               _isLandscape
                   ? Expanded(
-                      flex: 3,
+                      flex: 2,
                       child: LandscapeFilmDescription(id: selectedId),
                     )
                   : Container(),
@@ -57,32 +57,5 @@ class _MovieListPageState extends State<MovieListPageBloc> {
         },
       ),
     );
-  }
-
-  Widget _buildLandscapeListViewOfFilms() {
-    return Row(
-      children: [
-        Expanded(
-          flex: 3,
-          child: FilmBuilder(onTap: (index) {
-            setState(() {
-              selectedId = index;
-            });
-          }),
-        ),
-        LandscapeFilmDescription(id: selectedId),
-      ],
-    );
-  }
-
-  Widget _buildPortraitListViewOfFilms() {
-    return FilmBuilder(onTap: (index) {
-      selectedId = index;
-
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => MovieDetailsPageBloc(id: selectedId)));
-      // Navigator.of(context)
-      //     .pushNamed(MovieDetailsPageBloc.routeName, arguments: [selectedId]);
-    });
   }
 }
