@@ -13,6 +13,7 @@ class MovieListPageBloc extends StatefulWidget {
 class _MovieListPageState extends State<MovieListPageBloc> {
   var _isLandscape = false;
   int selectedId = 1;
+
   @override
   Widget build(BuildContext context) {
     final deviceOrientation = MediaQuery.of(context).orientation;
@@ -49,7 +50,7 @@ class _MovieListPageState extends State<MovieListPageBloc> {
               _isLandscape
                   ? Expanded(
                       flex: 2,
-                      child: LandscapeFilmDescription(id: selectedId),
+                      child: LandscapeFilmDescriptionBloc(id: selectedId),
                     )
                   : Container(),
             ],

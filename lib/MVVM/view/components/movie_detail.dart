@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/MVVM/models/movie_repository.dart';
 
-class MovieDetailsPage extends StatefulWidget {
+class MovieDetailPage extends StatelessWidget {
   final int id;
-  MovieDetailsPage(
-    this.id,
-  );
+  MovieDetailPage({
+    required this.id,
+  });
 
   static String routeName = '/movie_details_page';
 
   @override
-  _MovieDetailsPageState createState() => _MovieDetailsPageState();
-}
-
-class _MovieDetailsPageState extends State<MovieDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            movieList[widget.id].title,
+            movieList[id].title,
             style: TextStyle(
               color: Colors.black,
             ),
@@ -31,14 +27,14 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.network(
-                movieList[widget.id].imageUrl,
+                movieList[id].imageUrl,
                 height: 400,
                 width: 400,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  movieList[widget.id].year.toString(),
+                  movieList[id].year.toString(),
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
                 ),
@@ -46,7 +42,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  movieList[widget.id].description,
+                  movieList[id].description,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 30),
                 ),

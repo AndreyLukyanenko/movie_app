@@ -9,6 +9,6 @@ final Map<String, WidgetBuilder> routes = {
   HomePage.routeName: (context) => HomePage(),
   MovieListPage.routeName: (context) => MovieListPage(),
   MovieListPageBloc.routeName: (context) => MovieListPageBloc(),
-  MovieDetailScreen.routeName: (context) => MovieDetailScreen(),
+  // MovieDetailScreen.routeName: (context) => MovieDetailScreen(),
   // MovieDetailsPageBloc.routeName: (context) => MovieDetailsPageBloc(),
 };

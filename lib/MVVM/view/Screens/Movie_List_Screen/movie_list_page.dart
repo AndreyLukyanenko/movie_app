@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/MVVM/view/components/film_builder.dart';
 import 'package:test_app/MVVM/view/components/landscape_film_description.dart';
-import 'package:test_app/MVVM/view/components/movie_details.dart';
+import 'package:test_app/MVVM/view/components/movie_detail.dart';
 
 class MovieListPage extends StatefulWidget {
   static String routeName = '/movie_list_page';
@@ -11,8 +11,9 @@ class MovieListPage extends StatefulWidget {
 }
 
 class _MovieListPageState extends State<MovieListPage> {
-  int selectedId = 0;
+  int selectedId = 1;
   var _isLandscape = false;
+
   @override
   Widget build(BuildContext context) {
     final deviceOrientation = MediaQuery.of(context).orientation;
@@ -40,7 +41,8 @@ class _MovieListPageState extends State<MovieListPage> {
                     } else {
                       selectedId = index;
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MovieDetailsPage(selectedId)));
+                          builder: (context) =>
+                              MovieDetailPage(id: selectedId)));
                     }
                   },
                 ),

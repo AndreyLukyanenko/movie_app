@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/BLoC/data/movie_data_bloc.dart';
 
-class LandscapeFilmDescription extends StatelessWidget {
+class LandscapeFilmDescriptionBloc extends StatelessWidget {
   final int id;
 
-  LandscapeFilmDescription({
+  LandscapeFilmDescriptionBloc({
     Key? key,
     required this.id,
   }) : super(key: key);
